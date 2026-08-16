@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ELVYORA — Discover Products. Connect Directly.</title>
+<meta name="description" content="ELVYORA is a product discovery marketplace. Sellers list for ₹9/month, buyers browse for free and connect directly via WhatsApp or Instagram." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>◆</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#home" class="logo" aria-label="ELVYORA home">
+      <span class="logo-mark">E</span>
+      <span class="logo-word">ELVYORA</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#explore">Explore</a>
+      <a href="#categories">Categories</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#sell" class="nav-cta-link">List Your Product</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="navSearchToggle" aria-label="Search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <a href="#sell" class="btn btn-stamp-mini">₹9/mo</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-bg-pattern" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow">A discovery marketplace, not a checkout counter</p>
+      <h1 class="hero-title">Discover Products.<br/><span class="hero-title-accent">Connect Directly.</span></h1>
+      <p class="hero-sub">Explore products from independent sellers and connect with them directly through WhatsApp or Instagram — no cart, no checkout, no middleman.</p>
+      <div class="hero-actions">
+        <a href="#explore" class="btn btn-primary">Explore Products</a>
+        <a href="#sell" class="btn btn-outline">List Your Product — ₹9/month</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><strong id="statProducts">20+</strong><span>products listed</span></div>
+        <div class="trust-divider"></div>
+        <div class="trust-item"><strong>10</strong><span>categories</span></div>
+        <div class="trust-divider"></div>
+        <div class="trust-item"><strong>₹9</strong><span>flat monthly fee</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="stall-card stall-card-1">
+        <div class="stall-img" style="background-image:url('https://picsum.photos/seed/elvyora-hero1/300/300')"></div>
+        <div class="stall-tag">Handmade</div>
+      </div>
+      <div class="stall-card stall-card-2">
+        <div class="stall-img" style="background-image:url('https://picsum.photos/seed/elvyora-hero2/300/300')"></div>
+        <div class="stall-tag">Jewellery</div>
+      </div>
+      <div class="stall-card stall-card-3">
+        <div class="stall-img" style="background-image:url('https://picsum.photos/seed/elvyora-hero3/300/300')"></div>
+        <div class="stall-tag">Electronics</div>
+      </div>
+      <div class="price-stamp" role="img" aria-label="Nine rupees per month stamp">
+        <div class="price-stamp-inner">
+          <span class="price-stamp-rupee">₹9</span>
+          <span class="price-stamp-per">/ month</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SEARCH ============ -->
+<section class="search-section">
+  <div class="container">
+    <div class="search-bar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input type="text" id="searchInput" placeholder="Search products, brands or categories…" aria-label="Search products" />
+      <button class="search-clear" id="searchClear" aria-label="Clear search" hidden>&times;</button>
+    </div>
+    <p class="search-result-count" id="resultCount"></p>
+  </div>
+</section>
+
+<!-- ============ TRENDING CATEGORIES ============ -->
+<section class="categories" id="categories">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Browse by stall</p>
+      <h2>Trending Categories</h2>
+    </div>
+    <div class="category-grid" id="categoryGrid"></div>
+  </div>
+</section>
+
+<!-- ============ FEATURED PRODUCTS ============ -->
+<section class="featured-section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Handpicked this week</p>
+      <h2>Featured Products</h2>
+    </div>
+    <div class="rail" id="featuredRail"></div>
+  </div>
+</section>
+
+<!-- ============ RECENTLY ADDED ============ -->
+<section class="recent-section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Just listed</p>
+      <h2>Recently Added</h2>
+    </div>
+    <div class="rail" id="recentRail"></div>
+  </div>
+</section>
+
+<!-- ============ POPULAR SELLERS ============ -->
+<section class="sellers-section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Meet the stallholders</p>
+      <h2>Popular Sellers</h2>
+    </div>
+    <div class="seller-grid" id="sellerGrid"></div>
+  </div>
+</section>
+
+<!-- ============ ALL PRODUCTS / EXPLORE ============ -->
+<section class="products-section" id="explore">
+  <div class="container">
+    <div class="section-head section-head-row">
+      <div>
+        <p class="eyebrow">Everything on Elvyora</p>
+        <h2 id="productsHeading">All Products</h2>
+      </div>
+      <div class="grid-controls">
+        <label class="sort-label">
+          Sort
+          <select id="sortSelect">
+            <option value="default">Default</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="newest">Newest First</option>
+          </select>
+        </label>
+        <button class="chip chip-reset" id="resetFilters" hidden>Clear filters ×</button>
+      </div>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+    <p class="empty-state" id="emptyState" hidden>No products match your search. Try another keyword, category or filter.</p>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="how-it-works" id="how-it-works">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Two simple paths</p>
+      <h2>How Elvyora Works</h2>
+    </div>
+
+    <div class="hiw-columns">
+      <div class="hiw-col">
+        <h3 class="hiw-col-title">For Sellers</h3>
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><h4>Pay ₹9</h4><p>Pay just ₹9/month to list your product.</p></div>
+          <div class="step"><div class="step-num">02</div><h4>Add Your Product</h4><p>Upload photos, price, description and contact details.</p></div>
+          <div class="step"><div class="step-num">03</div><h4>Get Discovered</h4><p>Your product appears on Elvyora for buyers to discover.</p></div>
+          <div class="step"><div class="step-num">04</div><h4>Get Direct Enquiries</h4><p>Buyers contact you through WhatsApp or Instagram.</p></div>
+        </div>
+      </div>
+      <div class="hiw-col">
+        <h3 class="hiw-col-title">For Buyers</h3>
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><h4>Discover</h4><p>Browse products from different independent sellers.</p></div>
+          <div class="step"><div class="step-num">02</div><h4>Explore</h4><p>View product photos, prices and descriptions.</p></div>
+          <div class="step"><div class="step-num">03</div><h4>Contact</h4><p>Contact the seller directly on WhatsApp or Instagram.</p></div>
+          <div class="step"><div class="step-num">04</div><h4>Deal Directly</h4><p>Complete the purchase and arrangements directly with the seller.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST / CLARITY ============ -->
+<section class="trust-section">
+  <div class="container">
+    <div class="trust-card">
+      <p class="eyebrow eyebrow-on-ink">Good to know</p>
+      <h2>Elvyora helps buyers discover sellers.</h2>
+      <p class="trust-body">Elvyora does not process the final transaction between buyers and sellers. The actual purchase, payment, delivery and any other arrangements happen directly between buyer and seller, outside this website.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SELL SECTION ============ -->
+<section class="sell-section" id="sell">
+  <div class="container">
+    <div class="sell-intro">
+      <p class="eyebrow">For sellers</p>
+      <h2>List Your Product on Elvyora for Just ₹9/Month</h2>
+      <p class="sell-sub">Showcase your products to potential buyers and let them contact you directly. No complicated online store required.</p>
+      <div class="benefit-grid">
+        <div class="benefit"><span class="benefit-mark">✓</span>₹9/month per listing</div>
+        <div class="benefit"><span class="benefit-mark">✓</span>Upload product photos</div>
+        <div class="benefit"><span class="benefit-mark">✓</span>Add price</div>
+        <div class="benefit"><span class="benefit-mark">✓</span>Add description</div>
+        <div class="benefit"><span class="benefit-mark">✓</span>Add category</div>
+        <div class="benefit"><span class="benefit-mark">✓</span>Add location</div>
+        <div class="benefit"><span class="benefit-mark">✓</span>Add WhatsApp</div>
+        <div class="benefit"><span class="benefit-mark">✓</span>Add Instagram</div>
+        <div class="benefit"><span class="benefit-mark">✓</span>Get discovered by buyers</div>
+        <div class="benefit"><span class="benefit-mark">✓</span>No buyer-side checkout</div>
+        <div class="benefit"><span class="benefit-mark">✓</span>Direct communication with customers</div>
+      </div>
+    </div>
+
+    <!-- STEP 1: PAYMENT -->
+    <div class="listing-flow">
+      <div class="flow-step-label"><span class="flow-num">Step 1</span> Pay the listing fee</div>
+      <div class="payment-card">
+        <div class="payment-left">
+          <div class="payment-fee-label">Listing fee</div>
+          <div class="payment-fee-amount">₹9<span>/month</span></div>
+          <p class="payment-note">Pay via any UPI app using the ID below, or scan the QR code. This is a placeholder UPI ID for the demo — replace it with your own before going live.</p>
+          <div class="upi-id-row">
+            <code id="upiId">elvyora@upi</code>
+            <button class="copy-btn" id="copyUpiBtn" type="button">Copy</button>
+          </div>
+          <a class="btn btn-primary" id="payUpiBtn" href="upi://pay?pa=elvyora@upi&pn=Elvyora&am=9&cu=INR&tn=Elvyora%20listing%20fee" >Pay ₹9 via UPI</a>
+          <p class="payment-fine-print">Opens your UPI app on mobile. On desktop, scan the QR code instead. After paying, keep your UTR / transaction ID ready — you'll need it in Step 2.</p>
+        </div>
+        <div class="payment-right">
+          <div class="qr-wrap">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=upi%3A%2F%2Fpay%3Fpa%3Delvyora%40upi%26pn%3DElvyora%26am%3D9%26cu%3DINR" alt="Placeholder UPI QR code for the ₹9 Elvyora listing fee" width="220" height="220" loading="lazy" />
+            <span class="qr-caption">Scan to pay ₹9</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: LISTING FORM -->
+    <div class="listing-flow">
+      <div class="flow-step-label"><span class="flow-num">Step 2</span> Submit your listing details</div>
+      <div class="sell-panel">
+        <div class="sell-panel-form">
+          <form id="listingForm" novalidate>
+            <h4 class="form-section-title">Seller information</h4>
+            <div class="form-row">
+              <label>Seller name
+                <input type="text" name="sellerName" required placeholder="e.g. Ananya Rao" />
+              </label>
+              <label>Business / brand name
+                <input type="text" name="brandName" placeholder="e.g. Petal & Co." />
+              </label>
+            </div>
+            <label>Location
+              <input type="text" name="city" required placeholder="e.g. Jaipur" />
+            </label>
+
+            <h4 class="form-section-title">Product information</h4>
+            <div class="form-row">
+              <label>Product name
+                <input type="text" name="productName" required placeholder="e.g. Handloom Cotton Saree" />
+              </label>
+              <label>Category
+                <select name="productCategory" required>
+                  <option value="" disabled selected>Select category</option>
+                  <option>Fashion</option>
+                  <option>Jewellery</option>
+                  <option>Electronics</option>
+                  <option>Beauty</option>
+                  <option>Home & Living</option>
+                  <option>Accessories</option>
+                  <option>Handmade</option>
+                  <option>Food</option>
+                  <option>Services</option>
+                  <option>Other</option>
+                </select>
+              </label>
+            </div>
+            <div class="form-row">
+              <label>Price (₹)
+                <input type="number" name="productPrice" required min="1" placeholder="e.g. 999" />
+              </label>
+              <label>Product photos
+                <input type="file" name="productImage" id="productImageInput" accept="image/*" multiple />
+              </label>
+            </div>
+            <label>Description
+              <textarea name="description" rows="3" required placeholder="Describe your product in a few lines…"></textarea>
+            </label>
+
+            <h4 class="form-section-title">Contact</h4>
+            <div class="form-row">
+              <label>WhatsApp number
+                <input type="tel" name="whatsapp" required placeholder="e.g. 91XXXXXXXXXX" />
+              </label>
+              <label>Instagram username
+                <input type="text" name="instagram" placeholder="e.g. @yourbrand" />
+              </label>
+            </div>
+
+            <h4 class="form-section-title">Payment verification</h4>
+            <label>UTR / Transaction ID
+              <input type="text" name="utr" required placeholder="12-digit UPI reference number" />
+            </label>
+
+            <button type="submit" class="btn btn-primary btn-block">Submit Listing</button>
+          </form>
+        </div>
+
+        <!-- LIVE PREVIEW -->
+        <div class="sell-panel-preview">
+          <p class="preview-label">Live preview</p>
+          <div class="preview-card">
+            <div class="preview-img" id="previewImg" style="background-image:url('https://picsum.photos/seed/elvyora-preview/400/400')"></div>
+            <div class="preview-body">
+              <div class="preview-cat" id="previewCategory">Category</div>
+              <h4 id="previewName">Your product name</h4>
+              <div class="preview-price" id="previewPrice">₹—</div>
+              <p class="preview-desc" id="previewDesc">Your product description will appear here as you type.</p>
+              <div class="preview-seller">
+                <span id="previewSeller">Seller name</span> · <span id="previewCity">Location</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONFIRMATION -->
+    <div class="confirmation-block" id="confirmationBlock" hidden>
+      <div class="confirmation-card">
+        <div class="confirmation-icon">✓</div>
+        <h3>Listing submitted for verification.</h3>
+        <p>We'll verify your ₹9 payment and activate your listing. This demo does not automatically confirm payment — verification happens manually before a listing goes live.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="pricing-section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">One plan, one price</p>
+      <h2>Pricing</h2>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-stamp">
+        <span class="pricing-rupee">₹9</span>
+        <span class="pricing-per">/ month</span>
+      </div>
+      <h3>Seller Listing</h3>
+      <ul class="pricing-list">
+        <li>✓ Product listing</li>
+        <li>✓ Product photos</li>
+        <li>✓ Product description</li>
+        <li>✓ WhatsApp contact</li>
+        <li>✓ Instagram contact</li>
+        <li>✓ Marketplace visibility</li>
+        <li>✓ No commission on direct sales</li>
+      </ul>
+      <a href="#sell" class="btn btn-primary btn-block">List for ₹9/month</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" id="Contact">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="#home" class="logo">
+        <span class="logo-mark logo-mark-light">E</span>
+        <span class="logo-word">ELVYORA</span>
+      </a>
+      <p class="footer-tagline">"Discover. Connect. Buy Direct."</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Marketplace</h4>
+        <a href="#explore">Explore</a>
+        <a href="#categories">Categories</a>
+        <a href="#sell">List Your Product</a>
+        <a href="#how-it-works">How It Works</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:hello@elvyora.in">hello@elvyora.in</a>
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-clarify container">
+    Elvyora connects buyers with sellers. Transactions are completed directly between buyers and sellers.
+  </div>
+  <div class="footer-bottom container">
+    <span>© 2026 Elvyora. A demo marketplace built for showcase purposes.</span>
+  </div>
+</footer>
+
+<!-- ============ PRODUCT DETAIL MODAL ============ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalProductName">
+    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+</div>
+
+<div class="mobile-nav-overlay" id="mobileNavOverlay">
+  <nav class="mobile-nav-links">
+    <a href="#explore">Explore</a>
+    <a href="#categories">Categories</a>
+    <a href="#how-it-works">How It Works</a>
+    <a href="#sell">List Your Product</a>
+  </nav>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
